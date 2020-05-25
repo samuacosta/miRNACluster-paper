@@ -49,7 +49,7 @@ There are several machine learning tools and pipelines developed specifically fo
 
 This project was conceived with the aim of serving as a support tool to assist with the miRNA family classification present in the miRBase database. Although the process of detecting miRNA families does not rely only on their sequence structure, an automated approach to detect these families in a draft-like fashion could greatly facilitate the process. Moreover, the comparison between clustering patterns produced by different machine learning approaches could help to adjust the existing clustering or to find new similarities among previously unrelated miRNAs. This project involved, firstly, the determination of potential unsupervised machine learning approaches and algorithm implementations that could meet the requirements imposed by the nature of the work. Furthermore, statistical validation methods that allow a relevant comparison between the performance of the different algorithms had to be determined. Additionally, an automated implementation of the research pipeline able to produce clustering information in formats akin to the ones used in the miRBase database was designed.
 
-In this work we present miRNACluster, a Python-based pipeline for unsupervised miRNA clustering. The tool uses three different algorithms, representing different unsupervised machine learning approaches: centroid-based clustering, stochastic graph-based clustering and density-based clustering. MiRNACluster uses the entire miRBase repository of know hairpin miRNA sequences as an input, runs each algorithm and performs a statistical benchmarking using the miRBase families as ground truth class assignments. Finally, it produces an output file of families following the miRBase format and naming conventions for each algorithm. Additional raw files are optionally produced for easier sorting and cluster comparison. The statistical validation for each approach allows a cross-algorithm comparison to assess each algorithm’s suitability for miRNA sequence-based family detection.
+In this work we present miRNACluster, a Python-based pipeline for unsupervised miRNA clustering. The tool uses three different algorithms, representing different unsupervised machine learning approaches: centroid-based clustering, stochastic graph-based clustering and density-based clustering. MiRNACluster uses the entire miRBase repository of know hairpin miRNA sequences as an input, runs each algorithm and performs a statistical benchmarking using the miRBase families as ground truth class assignments. Finally, it produces an output file of families following the miRBase format and naming conventions for each algorithm. Additional raw files are optionally produced for easier sorting and cluster comparison. The statistical validation for each approach allows a cross-algorithm comparison to assess each algorithm's suitability for miRNA sequence-based family detection.
 
 \begin{methods}
 \section{Methods}
@@ -132,6 +132,7 @@ The three algorithms showed different levels of coverage of the dataset. MiRBase
 \caption{Data coverage patterns of each algorithm. A very high coverage value suggests higher sensibility to noise data.}\label{fig:01}
 \end{figure}
 %---------------------------
+
 The algorithms showed very variable coverage patterns (Fig 1). The Clustal$\Omega$ algorithm showed the most different coverage values, compared to miRBase and to the other algorithms. Almost the whole dataset was clustered, the coverage value being determined at 99.78\%, with 28583 clustered and 10 unclustered sequences. The total number of 2+ clusters found was 667 and the average number of miRNAs per cluster was 42.85. The MCL algorithm grouped 23573 miRNAs in 2253 different clusters, with 5071 sequences labelled as noise, covering 82.29\% of the dataset. The average number of sequences per cluster was 10.46. The DBSCAN algorithm clustered 20501 sequences in 2192 clusters, achieving 71.56\% coverage (8143 sequences labelled as noise). The average number of miRNAs per cluster was 9.35.
 
 \subsection{Statistical validation}
@@ -144,7 +145,7 @@ Despite having different bounded ranges, both the Fowlkes-Mallows score and the 
 \end{figure}
 %---------------------------
 
-In the clustering similarity evaluation, the ClustalΩ algorithm also showed a differentiated behaviour. Both measures had the lowest values among the three algorithms, showing a clear difference from the ground class assignments. Its value for the FMS was 0.101, which is very close to the independent labelling score, and in this context they can be considered very poor. In a different vein, the other two algorithms showed a very good performance, with values of 0.783 for the graph-based algorithm and 0.815 for the density-based algorithm, which was the best quality value overall. 
+In the clustering similarity evaluation, the Clustal$\Omega$ algorithm also showed a differentiated behaviour. Both measures had the lowest values among the three algorithms, showing a clear difference from the ground class assignments. Its value for the FMS was 0.101, which is very close to the independent labelling score, and in this context they can be considered very poor. In a different vein, the other two algorithms showed a very good performance, with values of 0.783 for the graph-based algorithm and 0.815 for the density-based algorithm, which was the best quality value overall. 
 %---------------------------
 \begin{figure}[ht]
 \centering
@@ -203,9 +204,9 @@ The content of this paper is the author's original work unless referenced clearl
 
 %\enlargethispage{6pt}
 
-\bibliographystyle{plainnat}
+\bibliographystyle{apalike}
 \nocite{*}
-\bibliography{ref}
+\bibliography{ref_formatted}
 
 
 \end{document}
